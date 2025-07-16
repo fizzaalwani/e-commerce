@@ -27,45 +27,56 @@ body,html{
     /* width:85%; */
     /* margin:0 auto; */
 }
-.shortCut{
-   /* height: 100%;
-   width: 100%; */
-   /* opacity: 0.7; */
-      height:60vh;
-    height: auto;
-    width: 70%;
-    top:50%;
-    right:50%;
-    transform: translate(50%,-50%);
-    background-color: #F2F2F2;
-    z-index: 100;
-    position:fixed;
-    overflow: hidden;
-}
-.shortCut img{
-    height:100%;
-    width: 100%;
-    position: relative;
 
+.shortCut {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  background-color: #F2F2F2;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
+
 .closeSlide {
-     height:100%;
-     width: 100%;
-    background-color: transparent;
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.closeSlide i {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 30px;
+  color: #454545;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 10;
 }
-.closeSlide i{
-     position: relative;
-     position: absolute;
-     z-index: 111;
-      color: #454545;
-      top:4%;
-      right:2%;
-     font-size: 30px;
-    background-color: transparent;
-       /* top:10%; */
+
+.closeSlide img {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
 }
+
 .shipping{
     width:100%;
     padding:12px 0px;
@@ -452,6 +463,7 @@ box-shadow: 7px 7px 12px rgba(94, 93, 93, 0.1);
 
 /* Responsive styles */
 @media (max-width: 768px) {
+ 
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -480,6 +492,13 @@ box-shadow: 7px 7px 12px rgba(94, 93, 93, 0.1);
 }
 
 @media (max-width:450px) {
+      .shortCut{
+    padding: 0;
+   }
+    .closeSlide img {
+  max-width: 100%;
+  max-height: 100%;
+    }
     .footer{
          padding: 30px 0px  30px;
          padding-bottom: 10px;

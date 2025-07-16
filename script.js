@@ -105,13 +105,31 @@ product.addEventListener('click',(e)=>{
    
 })
 
-function addToCart(product){
-      cart.push(product)
+function addToCart(productTitle){
+    
+    existingProduct=cart.find((item)=> item.productTitle===productTitle)
+    console.log(existingProduct)
+    if(existingProduct){
+       existingProduct.quantity+=1
+    }
+    else{
+         let product={productTitle,quantity:1}
+         cart.push(product)
+    }
       renderCartIcon(cart.length)
 }
 
-function addToFavourite(product){
-    favourites.push(product)
+function addToFavourite(productTitle){
+       existingProduct=cart.find((item)=> item.productTitle===productTitle)
+    console.log(existingProduct)
+
+    if(existingProduct){
+       existingProduct.quantity+=1
+    }
+    else{
+        let product={productTitle,quantity:1}
+        favourites.push(product)
+    }
     renderHeartIcon(favourites.length)
 }
 function renderCartIcon(count){
