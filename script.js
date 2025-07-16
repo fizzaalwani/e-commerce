@@ -1,5 +1,5 @@
 // let arr=[1,2,3,4,5,6,7,8,9,10];
-
+// console.log(arr.includes(2))
 // let arr2=arr.filter((item,index)=>item%2===0
 // )
 // console.log(arr2); // Output: [2, 4, 6, 8, 10]
@@ -43,7 +43,7 @@ const renderProducts=(data)=>{
             </ul>
             </div>
           <div class="p-name">${item.category}</div>
-          <div class="p-desc">${item.title}.</div>
+          <div class="p-desc">${item.title}</div>
           <div class="p-rating">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -55,7 +55,7 @@ const renderProducts=(data)=>{
     })
     
 }
-
+(function filterDataCategory(){
 let categories=document.querySelectorAll('.category-container li')
 console.log(categories)
 
@@ -73,10 +73,71 @@ categories.forEach((category,index)=>{
         console.log(filteredData)
         renderProducts(filteredData)
     } 
-
-
        
     })
 })
+})();
+
+let product=document.querySelector('.products')
+product.addEventListener('click',(e)=>{
+    if(e.target.tagName!== 'I')
+        return
+
+    if(e.target.tagName=='I'){
+        // console.dir(e.target)
+        // console.log(e.target.classList)
+        const element=e.target;
+        const productDiv=element.closest('.product');
+        if(element.classList.contains('fa-cart-shopping')){
+              const productToAdd=productDiv.querySelector('.p-desc').innerText;
+              addToCart(productToAdd)
+        }
+        else if(element.classList.contains('fa-heart')){
+             const productToAdd=productDiv.querySelector('.p-desc').innerText;
+             addToFavourite(productToAdd)
+        }
+         else if(element.classList.contains('fa-eye')){
+            const product=productDiv.querySelector('.p-desc').innerText;
+            displayProductShort(product)
+         }
+        
+    }
+   
+})
+
+function addToCart(product){
+      cart.push(product)
+      renderCartIcon(cart.length)
+}
+
+function addToFavourite(product){
+    favourites.push(product)
+    renderHeartIcon(favourites.length)
+}
+function renderCartIcon(count){
+    document.querySelector('.cart-count').innerText=count
+}
+function renderHeartIcon(count){
+    document.querySelector('.heart-count').innerText=count
+}
+function displayProductShort(productTitle){
+
+    // product.length=0;
+    console.log('in display product')
+      let product=data.filter((item,index)=>{
+        return item.title.trim().toLowerCase()==productTitle.trim().toLowerCase()
+      })
+      console.log("Product to display ",product);
+
+      document.querySelector('.shortCut img').setAttribute('src',product[0].image)
+      closeSlide();
+
+      
+}
+function closeSlide(){
+    document.querySelector('.shortCut').classList.toggle('hidden')
+}
+
+
 
 
