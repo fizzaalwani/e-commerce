@@ -1,243 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JINX-ecommerce</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"  />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JINX-ecommerce</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="main">
-
-      <div class="shortCut hidden">
-        <div class="closeSlide">
-          <i class="fa-solid fa-xmark close-slide" onclick=`${closeSlide()}`></i>
-        <img src="assets/banner-1.jpg" alt="">
-         </div>
+  <div class="main">
+    <div class="signup">
+      <div class="head">
+        <div class="heading">SignUp</div>
+        <div class="cross"> <i class="fa-solid fa-xmark close-slide" onclick=`${closeSlide()}`></i></div>
       </div>
-
-         <header class="shipping">
-            <div class="header-icons">
-                <div class="icon"><i class="fa-brands fa-facebook"></i></div>
-                <div class="icon"><i class="fa-brands fa-twitter"></i></div>
-                <div class="icon"><i class="fa-brands fa-instagram"></i></div>
-                <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
-            </div>
-           <div class="header-content">Free Shipping This Week Order Over - Rs 5000</div>
-         </header>
-
-         <header class="search-menu">
-            <div class="logo">jinx</div>
-            <div class="searchbar">
-                 <input type="text" placeholder="Enter your product name..." class="search-bar">
-                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-            <div class="menu">
-                <div class="user">  <i class="fa-regular fa-user"></i></div>
-                <div class="heart"> <a href="favourites.html"><i class="fa-regular fa-heart"></i>
-                <div class="heart-count">0</div></a></div>
-                <div class="cart"> <a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i>
-                 <div class="cart-count">0</div></a></div>
-            </div>
-         </header>
-         
-        <div class="category-container">
-          <ul>
-            <i class="fa-solid fa-bars hidden"></i>
-            <li class="active">Home</li>
-            <li>Men's Clothing</li>
-            <li>Jewelery</li>
-            <li>Women's Clothing</li>
-            <li>Electronics</li>
-          </ul>
-     </div>
-
-         <div class="slider">
-            <div class="slide-1 slide">
-                <!-- <img src="assets/banner-1.jpg" alt=""> -->
-                 <div class="content">
-                    <span>Trending Item</span>
-                    <span>Women's latest fashion sale</span>
-                    <span>starting at $ 20.00</span>
-                    <button>Shop Now</button>
-                 </div>
-            </div>
-            <div class="slide-2 slide">
-                   <div class="content">
-                    <span>Trending Item</span>
-                    <span>Women's latest fashion sale</span>
-                    <span>starting at $ 20.00</span>
-                    <button>Shop Now</button>
-                 </div>
-            </div>
-              <div class="slide-3 slide">
-                   <div class="content">
-                    <span>Trending Item</span>
-                    <span>Women's latest fashion sale</span>
-                    <span>starting at $ 20.00</span>
-                    <button>Shop Now</button>
-                 </div>
-              </div>
-         </div>
-
-  
-         <div class="products">
-         <!-- <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div>
-           <div class="product">
-            <div class="image">
-                <img src="assets/banner-1.jpg" alt="">
-            </div>
-          <div class="p-name">Jacket</div>
-          <div class="p-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-          <div class="p-rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <div class="p-price" style="font-weight: bold;">$48</div>
-         </div> -->
-         </div>
-
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <h2>MyBrand</h2>
-      <p>Building amazing things for amazing people.</p>
+      <div class="inputs">
+        <input type="text" name="email" id="" placeholder="Your Email">
+        <input type="text" name="password" id="" placeholder="Your Password">
+        <input type="submit" value="submit">
+      </div>
+      <div class="agreement">
+        <input type="checkbox" name="" id="">
+        <label for="">By continuing I agree to the terms of use & privacy policy</label>
+      </div>
+      <div class="login">
+        <p>Already have an account</p>
+        <span>Login Here</span>
+      </div>
     </div>
 
-    <div class="footer-links">
-      <h3>Quick Links</h3>
+
+    <div class="shortCut hidden">
+      <div class="closeSlide">
+        <i class="fa-solid fa-xmark close-slide" onclick=`${closeSlide()}`></i>
+        <img src="assets/banner-1.jpg" alt="">
+      </div>
+    </div>
+
+    <header class="shipping">
+      <div class="header-icons">
+        <div class="icon"><i class="fa-brands fa-facebook"></i></div>
+        <div class="icon"><i class="fa-brands fa-twitter"></i></div>
+        <div class="icon"><i class="fa-brands fa-instagram"></i></div>
+        <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+      </div>
+      <div class="header-content">Free Shipping This Week Order Over - Rs 5000</div>
+    </header>
+
+    <header class="search-menu">
+      <div class="logo">jinx</div>
+      <div class="searchbar">
+        <input type="text" placeholder="Enter your product name..." class="search-bar">
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      <div class="menu">
+        <div class="user"> <i class="fa-regular fa-user"></i></div>
+        <div class="heart"> <a href="favourites.html"><i class="fa-regular fa-heart"></i>
+            <div class="heart-count">0</div>
+          </a></div>
+        <div class="cart"> <a href="cart.html"> <i class="fa-solid fa-cart-shopping"></i>
+            <div class="cart-count">0</div>
+          </a></div>
+      </div>
+    </header>
+
+    <div class="category-container">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Contact</a></li>
+        <i class="fa-solid fa-bars hidden"></i>
+        <li class="active">Home</li>
+        <li>Men's Clothing</li>
+        <li>Jewelery</li>
+        <li>Women's Clothing</li>
+        <li>Electronics</li>
       </ul>
     </div>
 
-    <div class="footer-social">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    <div class="slider">
+      <div class="slide-1 slide">
+        <!-- <img src="assets/banner-1.jpg" alt=""> -->
+        <div class="content">
+          <span>Trending Item</span>
+          <span>Women's latest fashion sale</span>
+          <span>starting at $ 20.00</span>
+          <button>Shop Now</button>
+        </div>
+      </div>
+      <div class="slide-2 slide">
+        <div class="content">
+          <span>Trending Item</span>
+          <span>Women's latest fashion sale</span>
+          <span>starting at $ 20.00</span>
+          <button>Shop Now</button>
+        </div>
+      </div>
+      <div class="slide-3 slide">
+        <div class="content">
+          <span>Trending Item</span>
+          <span>Women's latest fashion sale</span>
+          <span>starting at $ 20.00</span>
+          <button>Shop Now</button>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 MyBrand. All rights reserved.</p>
-  </div>
-</footer>
 
 
-        
-
-
+    <div class="products">
+    
     </div>
-    <script src="script.js"></script>
+
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>MyBrand</h2>
+          <p>Building amazing things for amazing people.</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 MyBrand. All rights reserved.</p>
+      </div>
+    </footer>
+
+
+
+
+
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>
 
 <!-- script.js:16 men's clothing

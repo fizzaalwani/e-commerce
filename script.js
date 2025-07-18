@@ -29,12 +29,120 @@ let data=[];
             renderFavPage();
             removeFavItem();
         }
+        if(document.querySelector('.product-detail') && window.location.pathname.includes('product.html'))
+        {
+            renderSelectedProduct();
+        }
        
     }catch(err){
         console.error("Error fetching data:", err);
     }  
     
 })();
+
+
+(async function getData() {
+    try {
+        let res = await fetch('https://fakestoreapi.com/products');
+        data = await res.json();
+        console.log(data);
+
+        if (document.querySelector('.products')) {
+            renderProducts(data);
+        }
+        
+        if (document.querySelector('.table-body') && window.location.pathname.includes('cart.html')) {
+            renderCartPage();
+            removeItem();
+        }
+        
+        if (document.querySelector('.table-body') && window.location.pathname.includes('favourites.html')) {
+            renderFavPage();
+            removeFavItem();
+        }
+        
+        if (document.querySelector('.product-detail-container') && window.location.pathname.includes('product.html')) {
+            renderSelectedProduct();
+        }
+       
+    } catch(err) {
+        console.error("Error fetching data:", err);
+    }  
+})();
+
+function renderSelectedProduct(){
+   const productContainer= document.querySelector('.product-detail')
+   if(productContainer){
+    productContainer.innerHTML=``
+    let product=JSON.parse(localStorage.getItem('selectedProduct')) || [];
+
+      if (!product) {
+    productContainer.innerHTML = "<p>Product not found.</p>";
+    return;
+  }
+
+    console.log(product)
+    document.title=product.title
+
+    // Calculate star rating display
+        const fullStars = Math.floor(product.rating.rate);
+        const hasHalfStar = product.rating.rate % 1 >= 0.5;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+        let starsHTML = '';
+        for (let i = 0; i < fullStars; i++) {
+            starsHTML += '<i class="fas fa-star"></i>';
+        }
+        if (hasHalfStar) {
+            starsHTML += '<i class="fas fa-star-half-alt"></i>';
+        }
+        for (let i = 0; i < emptyStars; i++) {
+            starsHTML += '<i class="far fa-star"></i>';
+        }
+
+    productContainer.innerHTML=`
+     <div class="product-gallery">
+                <img src=${product.image} alt="Fjallraven - Foldsack No. 1 Backpack" class="main-image">
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">${product.title}</h1>
+                <span class="product-category">${product.category}</span>
+                <div class="product-price">$${product.price}</div>
+                
+                <div class="product-rating">
+                    <div class="stars">
+                       ${starsHTML}
+                    </div>
+                    <span class="rating-count">${product.rating.count} reviews</span>
+                </div>
+                
+                <p class="product-description">
+                   ${product.description}
+                </p>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="addToCart('${product.title}')">Add to Cart</button>
+                    <button class="btn btn-secondary" onclick="addToFavourite('${product.title}')">Add to Wishlist</button>
+                </div>
+                
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Category:</span>
+                        <span class="meta-value">${product.category}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SKU:</span>
+                        <span class="meta-value">JX-${product.id.toString().padStart(3, '0')}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Availability:</span>
+                        <span class="meta-value">In Stock</span>
+                    </div>
+                </div>`
+
+   }
+}
 
 const renderProducts=(data)=>{
     const productContainer=document.querySelector('.products');
@@ -63,6 +171,12 @@ const renderProducts=(data)=>{
             <i class="fa-solid fa-star"></i>
           </div>
           <div class="p-price" style="font-weight: 600;">$${item.price}</div>`
+
+          product.addEventListener('click',(e)=>{
+            localStorage.setItem("selectedProduct",JSON.stringify(item))
+            if(e.target.tagName=='I') return;
+            window.location.href='product.html'
+          })
            productContainer.appendChild(product)
     })
     }
@@ -189,7 +303,10 @@ function renderCartPage(){
     let i=0;
     let cart=getCart();
     const tableBody= document.querySelector('.table-body');
-    if(!tableBody) return 
+    if(!tableBody){
+        tableBody.innerHTML='<p>No items available</p>'
+        return;
+    } 
     tableBody.innerHTML=''
     console.log("Added to cart items :",cart)
 
@@ -221,7 +338,10 @@ function renderCartPage(){
 function renderFavPage() {
   const favourites = getFavourites();
   const tableBody = document.querySelector('.table-body');
-  if (!tableBody) return;
+     if(!tableBody){
+        tableBody.innerHTML='<p>No items available</p>'
+        return;
+    } 
   tableBody.innerHTML = '';
   let i = 0;
 

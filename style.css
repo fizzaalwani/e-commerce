@@ -30,6 +30,29 @@ body,html{
     /* margin:0 auto; */
 }
 
+.signup{
+  position: absolute;
+  top:50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+  background-color:#e2e2e2;
+  padding:16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap:14px;
+  color:#454545;
+}
+.signup .head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signup.inputs{
+  display: flex;
+  flex-direction: column;
+  gap:12px;
+}
+
 .shortCut {
   position: fixed;
   top: 50%;
