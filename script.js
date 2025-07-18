@@ -15,10 +15,20 @@ let data=[];
         let res=await fetch('https://fakestoreapi.com/products');
         data=await res.json();
         console.log(data);
-       renderProducts(data);
-        renderCartPage();
-         removeItem();
 
+        if (document.querySelector('.products')) {
+            renderProducts(data);
+        }
+        
+        if (document.querySelector('.table-body') && window.location.pathname.includes('cart.html')) {
+            renderCartPage();
+            removeItem();
+        }
+        
+        if (document.querySelector('.table-body') && window.location.pathname.includes('favourites.html')) {
+            renderFavPage();
+            removeFavItem();
+        }
        
     }catch(err){
         console.error("Error fetching data:", err);
@@ -133,14 +143,14 @@ function addToCart(productTitle){
 function addToFavourite(productTitle){
 
     let favourites=getFavourites();
-       existingProduct=favourites.find((item)=> item.productTitle===productTitle)
+       existingProduct=favourites.find((item)=> item===productTitle)
     console.log(existingProduct)
 
     if(existingProduct){
-       existingProduct.quantity+=1
+       return
     }
     else{
-        let product={productTitle,quantity:1}
+        let product=productTitle
         favourites.push(product)
     }
     localStorage.setItem("favourites",JSON.stringify(favourites))
@@ -208,6 +218,33 @@ function renderCartPage(){
     // removeItem();
 };
 
+function renderFavPage() {
+  const favourites = getFavourites();
+  const tableBody = document.querySelector('.table-body');
+  if (!tableBody) return;
+  tableBody.innerHTML = '';
+  let i = 0;
+
+  favourites.forEach((fav) => {
+    const product = data.find(p => 
+      p.title.trim().toLowerCase() === fav.trim().toLowerCase()
+    );
+    if (product) {
+      i += 1;
+      tableBody.innerHTML += `
+        <tr class="productDetails">
+          <td>${i}</td>
+          <td><img src="${product.image}" alt="product image"></td>
+          <td>${product.title}</td>
+          <td>$${product.price}</td>
+          <td><button class="remove-fav-btn"><i class="fa-solid fa-xmark"></i></button></td>
+        </tr>
+      `;
+    }
+  });
+//   bindRemoveFromFavourites();
+}
+
 
 
 function removeItem(){
@@ -235,6 +272,32 @@ function removeItem(){
         renderIcon("cart",'.cart-count');
     })
 }
+function removeFavItem(){
+    
+    let tableBody=document.querySelector('.table-body')
+    tableBody.addEventListener('click',(e)=>{
+        if(e.target.tagName!=='I')
+            return;
+    
+
+        let parent=e.target.closest('.productDetails')
+        if (!parent) return;
+        let productTitle=parent.children[2].innerText;
+        // let quantity=parent.children[4].innerText;
+
+
+        let fav=getFavourites();
+        fav=fav.filter((item)=>{
+            return item.trim().toLowerCase()!==productTitle.trim().toLowerCase()
+        })
+        console.log("Updated fav : ",fav)
+        localStorage.setItem("favourites",JSON.stringify(fav))
+
+        renderFavPage();
+        renderIcon("favourites",'.heart-count');
+    })
+}
+
 
 //getters
 function getCart(){
@@ -245,17 +308,53 @@ function getFavourites(){
 }
 
 function clearCart(){
-    localStorage.removeItem("cart");
     let cart=getCart();
-    console.log(cart)
+    if(!cart || cart.length==0){
+       alert("Nothing in cart");
+       return;
+    }
+
+    if(confirm("Are you sure you want to delete all cart items")){
+         localStorage.removeItem("cart");
+         renderCartPage();
+         renderIcon('cart','.cart-count')
+    }
+}
+function clearFav(){
+    let fav=getFavourites();
+    if(!fav || fav.length==0){
+       alert("Nothing in cart");
+       return;
+    }
+
+    if(confirm("Are you sure you want to delete all your Favourites")){
+         localStorage.removeItem("favourites");
+         renderFavPage();
+        renderIcon("favourites",'.heart-count')
+    }
+    // let cart=getCart();
+    // console.log(cart)
 }
 
 
-document.querySelector('.clear-cart-btn').addEventListener('click',()=>{
+let clearCartBtn=document.querySelector('.clear-cart-btn')
+if(clearCartBtn){
+    clearCartBtn.addEventListener('click',()=>{
     clearCart();
     renderCartPage();
     renderIcon('cart','.heart-count')
 })
+}
+
+let clearFavBtn=document.querySelector('.clear-fav-btn');
+if(clearFavBtn){
+    clearFavBtn.addEventListener('click',()=>{
+    clearFav();
+    renderFavPage();
+    renderIcon('favourites','.heart-count');
+})
+}
+
 
 
 

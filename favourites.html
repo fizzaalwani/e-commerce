@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinx - Favorites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="favourites.css">
+</head>
+<body>
+    <div class="main">
+        <header class="search-menu">
+            <div class="logo"><a href="index.html">jinx</a></div>
+            <div class="menu">
+                <div class="user"><i class="fa-regular fa-user"></i></div>
+                <div class="heart"><i class="fa-regular fa-heart"></i>
+                    <div class="heart-count">0</div>
+                </div>
+                <div class="cart"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
+                    <div class="cart-count">0</div></a></div>
+            </div>
+        </header>
+        
+        <div class="fav-header-container">
+            <h1 class="fav-title">Your Favorites</h1>
+            <button class="clear-fav-btn">Clear All</button>
+        </div>
+        
+        <div class="favItems-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <!-- <th>Add to Cart</th> -->
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <!-- Favorite items will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,5 +1,4 @@
-/* Updated CSS with modern, sleek UI improvements */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Signika:wght@300..700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
     --primary: #FF8F9C;
@@ -35,14 +34,13 @@ body, html {
     flex-direction: column;
 }
 
-
 .search-menu {
     width: 85%;
-    margin: 0 auto;
+    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border);
 }
 
@@ -68,7 +66,7 @@ body, html {
 
 .search-menu .menu i {
     color: var(--text);
-    font-size: 24px;
+    font-size: 22px;
     cursor: pointer;
 }
 
@@ -100,8 +98,8 @@ body, html {
     justify-content: center;
 }
 
-/* Cart Header Styles */
-.cart-header-container {
+/* Favorites Header Styles */
+.fav-header-container {
     width: 85%;
     margin: 40px auto 20px;
     display: flex;
@@ -109,14 +107,13 @@ body, html {
     align-items: center;
 }
 
-.cart-title {
-    font-size: 1.6rem;
+.fav-title {
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text);
-      /* color:RGB(150, 149, 149); */
 }
 
-.clear-cart-btn {
+.clear-fav-btn {
     background-color: transparent;
     border: 1px solid var(--primary);
     color: var(--primary);
@@ -127,58 +124,55 @@ body, html {
     transition: all 0.3s ease;
 }
 
-.clear-cart-btn:hover {
+.clear-fav-btn:hover {
     background-color: var(--primary);
     color: var(--white);
 }
 
-/* Cart Items Container */
-.cartItems-container {
+/* Favorites Items Container */
+.favItems-container {
     width: 85%;
     max-width: 1200px;
-    margin: 0 auto 30px;
+    margin: 0 auto 50px;
     overflow-x: auto;
     background-color: transparent;
     padding: 20px;
     border-radius: 12px;
-    min-height: 60vh;
 }
 
-.cartItems-container table {
+.favItems-container table {
     width: 100%;
     border-collapse: collapse;
     min-width: 700px;
 }
 
-.cartItems-container th {
+.favItems-container th {
     padding: 16px 12px;
     text-align: center;
     background-color: var(--bg-light);
     color: var(--text);
-    /* color:RGB(177, 177, 187); */
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.5px;
 }
 
-.cartItems-container td {
+.favItems-container td {
     padding: 20px 12px;
     text-align: center;
     border-bottom: 1px solid var(--border);
     font-size: 0.95rem;
-      color:RGB(150, 149, 149);
 }
 
-.cartItems-container tr:nth-child(even) {
+.favItems-container tr:nth-child(even) {
     background-color: var(--bg-light);
 }
 
-.cartItems-container tr:hover {
+.favItems-container tr:hover {
     background-color: #f5f5f5;
 }
 
-.cartItems-container td img {
+.favItems-container td img {
     width: 70px;
     height: 70px;
     object-fit: cover;
@@ -187,149 +181,57 @@ body, html {
     transition: transform 0.3s ease;
 }
 
-.cartItems-container td img:hover {
+.favItems-container td img:hover {
     transform: scale(1.05);
 }
 
-.remove-btn {
+.remove-fav-btn, .add-to-cart-btn {
     background: none;
     border: none;
     cursor: pointer;
     padding: 8px;
-    border-radius: 50%;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
-.remove-btn i {
+.remove-fav-btn i {
     color: var(--primary);
     font-size: 1.2rem;
     transition: color 0.3s ease;
 }
 
-.remove-btn:hover {
+.remove-fav-btn:hover {
     background-color: #ffebee;
 }
 
-.remove-btn i:hover {
+.remove-fav-btn i:hover {
     color: var(--primary-dark);
 }
 
-/* Quantity Controls */
-.quantity-control {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.quantity-btn {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.quantity-btn:hover {
+.add-to-cart-btn {
     background-color: var(--primary);
-    color: var(--white);
-    border-color: var(--primary);
+    color: white;
+    padding: 8px 12px;
+    font-size: 0.9rem;
 }
 
-.quantity-value {
-    min-width: 30px;
-    text-align: center;
-}
-
-/* Cart Summary */
-.cart-summary {
-    width: 85%;
-    max-width: 1200px;
-    margin: 0 auto 50px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.summary-container {
-    width: 100%;
-    max-width: 350px;
-    background-color: var(--bg-light);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.summary-container h3 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-}
-
-.summary-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-}
-
-.summary-row.total {
-    margin-top: 20px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border);
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.checkout-btn {
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    background-color: var(--primary);
-    color: var(--white);
-    border: none;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.checkout-btn:hover {
+.add-to-cart-btn:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
-    .shipping {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
-    }
-    
     .search-menu {
         width: 90%;
     }
     
-    .cart-header-container,
-    .cartItems-container,
-    .cart-summary {
+    .fav-header-container,
+    .favItems-container {
         width: 90%;
     }
     
-    .cart-title {
+    .fav-title {
         font-size: 1.5rem;
-    }
-    
-    .summary-container {
-        max-width: 100%;
     }
 }
 
@@ -338,15 +240,15 @@ body, html {
         gap: 15px;
     }
     
-    .cartItems-container {
+    .favItems-container {
         padding: 10px 5px;
     }
     
-    .cartItems-container td {
+    .favItems-container td {
         padding: 15px 8px;
     }
     
-    .cartItems-container td img {
+    .favItems-container td img {
         width: 50px;
         height: 50px;
     }
